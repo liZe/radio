@@ -32,7 +32,7 @@ class Window(Gtk.ApplicationWindow):
 
         self.stop_button = Gtk.Button()
         self.stop_button.add(
-            Gtk.Image.new_from_icon_name('media-playback-stop-symbolic', 32))
+            Gtk.Image.new_from_icon_name('media-playback-stop-symbolic', 1))
         self.header.add(self.stop_button)
         self.stop_button.set_sensitive(False)
         self.stop_button.connect('clicked', self.stop)
