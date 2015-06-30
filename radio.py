@@ -42,11 +42,15 @@ class Window(Gtk.ApplicationWindow):
 
         self.icon_view = Gtk.IconView()
         self.icon_view.set_model(self.model)
+        self.icon_view.set_item_width(148)
         self.icon_view.set_text_column(0)
         self.icon_view.set_pixbuf_column(2)
         self.icon_view.set_activate_on_single_click(True)
         self.icon_view.connect('item-activated', self.play)
-        self.add(self.icon_view)
+
+        scroll = Gtk.ScrolledWindow()
+        scroll.add(self.icon_view)
+        self.add(scroll)
 
         Gst.init()
         self.playbin = Gst.ElementFactory.make('playbin', 'player')
@@ -79,6 +83,7 @@ class Window(Gtk.ApplicationWindow):
 class Radio(Gtk.Application):
     def do_activate(self):
         self.window = Window(self)
+        self.window.maximize()
         self.window.show_all()
 
 
