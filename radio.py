@@ -13,9 +13,12 @@ import configparser
 import os
 
 import gi
+
+gi.require_version('Adw', '1')
 gi.require_version('Gtk', '4.0')
 gi.require_version('Gst', '1.0')
-from gi.repository import Gtk, GdkPixbuf, Gst  # noqa
+
+from gi.repository import Adw, GdkPixbuf, Gst, Gtk  # noqa
 
 
 CONFIG_FOLDER = os.path.expanduser('~/.config/radio')
@@ -88,9 +91,9 @@ class Window(Gtk.ApplicationWindow):
         self.stop_button.set_sensitive(False)
 
 
-class Radio(Gtk.Application):
+class Radio(Adw.Application):
     def __init__(self):
-        Gtk.Application.__init__(self, application_id='fr.yabz.radio')
+        Adw.Application.__init__(self, application_id='fr.yabz.radio')
 
     def do_activate(self):
         self.window = Window(self)
